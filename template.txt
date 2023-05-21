@@ -1,0 +1,23 @@
+https://replit.com/@alexanderjo991/template-card-detail#index.html
+fungsi simbol !!
+https://www.dicoding.com/academies/219/discussions/97467
+name
+desc
+city
+address
+image
+categories 
+  - name (country): italia
+  - name (type): modern
+menu
+  - foods
+     - name: paket resmary
+     - name: toastie salmon
+  - drinks
+     - name: eskrim
+     - name: sirup
+rating
+customerReviews
+   - name
+   - review
+   - date
