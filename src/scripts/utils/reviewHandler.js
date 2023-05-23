@@ -1,4 +1,4 @@
-import RestaurantDbSource from '../data/restaurantdb-source';
+import RestaurantDbSource from '../data/therestaurantdb-source';
 import UrlParser from '../routes/url-parser';
 
 const ReviewHandler = async () => {
@@ -11,10 +11,12 @@ const ReviewHandler = async () => {
     name: name.value,
     review: review.value,
   };
-  await RestaurantDbSource.createReview(data);
-  name.value = '';
-  review.value = '';
-  // reviewContainer.innerHTML +=
+  // eslint-disable-next-line eqeqeq
+  if (data.name != '' && data.review != '') {
+    await RestaurantDbSource.createReview(data);
+  } else {
+    alert('Silahkan isi nama dan pesan anda');
+  }
 };
 
 export default ReviewHandler;

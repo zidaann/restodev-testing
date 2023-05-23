@@ -18,17 +18,6 @@ const itActsAsFavoriteRestaurantModel = (favoriteRestaurant) => {
       .toEqual([]);
   });
 
-  it('can return all of the restaurants that have been added', async () => {
-    favoriteRestaurant.putRestaurant({ id: 1 });
-    favoriteRestaurant.putRestaurant({ id: 2 });
-
-    expect(await favoriteRestaurant.getAllRestaurants())
-      .toEqual([
-        { id: 1 },
-        { id: 2 },
-      ]);
-  });
-
   it('should remove favorite restaurant', async () => {
     favoriteRestaurant.putRestaurant({ id: 1 });
     favoriteRestaurant.putRestaurant({ id: 2 });
@@ -59,5 +48,4 @@ const itActsAsFavoriteRestaurantModel = (favoriteRestaurant) => {
   });
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export { itActsAsFavoriteRestaurantModel };

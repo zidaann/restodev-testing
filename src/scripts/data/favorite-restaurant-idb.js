@@ -9,9 +9,9 @@ const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
   },
 });
 
-const FavoriteRestaurantDb = {
+const FavoriteRestaurantIdb = {
   async getRestaurant(id) {
-    if(!id){
+    if (!id) {
       return;
     }
     return (await dbPromise).get(OBJECT_STORE_NAME, id);
@@ -23,14 +23,23 @@ const FavoriteRestaurantDb = {
     if (!restaurant.hasOwnProperty('id')) {
       return;
     }
+    // eslint-disable-next-line consistent-return
     return (await dbPromise).put(OBJECT_STORE_NAME, restaurant);
   },
   async deleteRestaurant(id) {
     return (await dbPromise).delete(OBJECT_STORE_NAME, id);
   },
-  // eslint-disable-next-line no-empty-function
-  async searchRestaurants(query){
+  async searchRestaurants(query) {
+    return (await this.getAllRestaurants()).filter((restaurant) => {
+      const loweredCaseRestaurantTitle = (restaurant.title || '-').toLowerCase();
+      const jammedRestaurantTitle = loweredCaseRestaurantTitle.replace(/\s/g, '');
+
+      const loweredCaseQuery = query.toLowerCase();
+      const jammedQuery = loweredCaseQuery.replace(/\s/g, '');
+
+      return jammedRestaurantTitle.indexOf(jammedQuery) !== -1;
+    });
   },
 };
 
-export default FavoriteRestaurantDb;
+export default FavoriteRestaurantIdb;

@@ -1,16 +1,20 @@
-import { createBookmarkRestaurantTemplate, createUnbookmarkedRestaurantTemplate } from '../view/templates/template-creator';
+import {
+  createBookmarkRestaurantButtonTemplate,
+  createUnbookmarkedRestaurantButtonTemplate,
+} from '../views/templates/template-creator';
 
 const BookmarkButtonPresenter = {
-  // eslint-disable-next-line no-shadow
   async init({ bookmarkButtonContainer, favoriteRestaurants, restaurant }) {
     this._bookmarkButtonContainer = bookmarkButtonContainer;
     this._restaurant = restaurant;
     this._favoriteRestaurants = favoriteRestaurants;
+
     await this._renderButton();
   },
 
   async _renderButton() {
     const { id } = this._restaurant;
+
     if (await this._isRestaurantExist(id)) {
       this._renderUnbookmarked();
     } else {
@@ -24,20 +28,20 @@ const BookmarkButtonPresenter = {
   },
 
   _renderBookmark() {
-    this._bookmarkButtonContainer.innerHTML = createBookmarkRestaurantTemplate();
+    this._bookmarkButtonContainer.innerHTML = createBookmarkRestaurantButtonTemplate();
 
-    const bookmark = document.getElementById('bookmarkButton');
-    bookmark.addEventListener('click', async () => {
+    const bookmarkButton = document.querySelector('#bookmarkButton');
+    bookmarkButton.addEventListener('click', async () => {
       await this._favoriteRestaurants.putRestaurant(this._restaurant);
       this._renderButton();
     });
   },
 
   _renderUnbookmarked() {
-    this._bookmarkButtonContainer.innerHTML = createUnbookmarkedRestaurantTemplate();
+    this._bookmarkButtonContainer.innerHTML = createUnbookmarkedRestaurantButtonTemplate();
 
-    const unBookmarked = document.getElementById('bookmarkButton');
-    unBookmarked.addEventListener('click', async () => {
+    const bookmarkButton = document.querySelector('#bookmarkButton');
+    bookmarkButton.addEventListener('click', async () => {
       await this._favoriteRestaurants.deleteRestaurant(this._restaurant.id);
       this._renderButton();
     });

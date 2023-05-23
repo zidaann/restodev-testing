@@ -2,9 +2,10 @@ import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
 import './components/footer-bar';
 import './components/app-bar';
-import App from './view/app';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import App from './views/app';
 import swRegister from './utils/sw-register';
-import HelperDarkMode from './utils/helper-darkMode';
 
 const app = new App({
   button: document.querySelector('#hamburger'),
@@ -18,6 +19,5 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
-  HelperDarkMode();
   swRegister();
 });

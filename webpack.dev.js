@@ -1,7 +1,5 @@
-// eslint-disable-next-line import/no-import-module-exports
-const path = require('path');
 const { merge } = require('webpack-merge');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -19,7 +17,4 @@ module.exports = merge(common, {
     },
     compress: true,
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-  ],
 });

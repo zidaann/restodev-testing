@@ -35,7 +35,10 @@ class AppBar extends HTMLElement {
     }
     </style>    
     <div class="jumbotron" id="jumbotron">
-        <img src="./images/heros/hero-image_2.jpg" alt="Gambar pemanis restaurant" tabindex="0" crossorigin="anonymous">
+    <picture>
+        <source media="(max-width: 800px)" srcset="./images/heros/hero-small.jpg" class="lazyload">
+        <img src="./images/heros/hero-large.jpg" alt="Gambar restaurant" tabindex="0" crossorigin="anonymous" class="lazyload">
+    </picture>
     </div>
             `;
   }
