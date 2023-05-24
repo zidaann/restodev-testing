@@ -74,7 +74,7 @@ module.exports = {
       ],
     }),
     new BundleAnalyzerPlugin({
-      analyzerMode: AnalyzerMode(),
+      analyzerMode: 'disabled',
     }),
   ],
 };
