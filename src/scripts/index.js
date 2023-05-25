@@ -6,9 +6,10 @@ import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import App from './views/app';
 import swRegister from './utils/sw-register';
+import skeletonHandler from './utils/skeletonHandler';
 
 const app = new App({
-  button: document.querySelector('#hamburger'),
+  button: document.querySelector('#menu-hamburger'),
   drawer: document.querySelector('#navigationDrawer'),
   content: document.querySelector('#mainContent'),
 });

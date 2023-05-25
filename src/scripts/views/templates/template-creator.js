@@ -89,18 +89,34 @@ ${data.customerReviews.map((reviewer) => `
 
 const card = (data) => `
         <div class="card">
-        <picture>
-          <source media="(max-width: 450px)" data-srcset="${CONFIG.BASE_IMAGE_URL_SM + data.pictureId}" tabindex="0" class="lazyload">
-          <img class="lazyload" data-src='${CONFIG.BASE_IMAGE_URL_SM + data.pictureId}' alt="${data.name}"tabindex="0" />
+        <picture class="">
+          <source media="(max-width: 450px)" data-srcset="${CONFIG.BASE_IMAGE_URL_SM + data.pictureId}" tabindex="0" class=" lazyload skeleton">
+          <img class=" lazyload skeleton" data-src='${CONFIG.BASE_IMAGE_URL_SM + data.pictureId}' alt="${data.name}"tabindex="0" />
         </picture>
-            <div class="card-header restaurant-title" ><a href="#/detail/${data.id}" tabindex="0">${data.name}</a></div>
-            <div class="card-body">${data.description} </div>
-            <div class="card-footer">
-            <div class="card-city" tabindex="0"><strong>Kota: </strong> ${data.city}</div>
-            <div class="card-rate" tabindex="0"><strong>Rating:   </strong>${data.rating} </div>
+            <div class="card-header restaurant-title" ><a class="skeleton" href="#/detail/${data.id}" tabindex="0">${data.name}</a></div>
+            <div class="card-body ">
+              <p class="skeleton">${data.description}</p>
+            </div>
+            <div class="card-footer ">
+            <div class="card-city skeleton" tabindex="0"><strong>Kota: </strong> ${data.city}</div>
+            <div class="card-rate skeleton" tabindex="0"><strong>Rating:   </strong>${data.rating} </div>
             </div>
           </div>
       `;
+
+const skeletonCard = () => {
+  `
+  <div class="card">
+    <img class="lazyload skeleton" src='#' alt="image-skeleton"/>
+      <div class="card-header restaurant-title skeleton" ><a href="#"></a></div>
+      <div class="card-body skeleton"> </div>
+      <div class="card-footer">
+      <div class="card-city skeleton"></div>
+      <div class="card-rate skeleton"></div>
+      </div>
+    </div>
+  `;
+};
 
 const createBookmarkRestaurantButtonTemplate = () => `
     <button aria-label="bookmark this restaurant" id="bookmarkButton" class="bookmark">

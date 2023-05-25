@@ -21,7 +21,7 @@ Scenario('bookmark one restaurant', async ({ I }) => {
   const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant);
   I.click(firstRestaurant);
 
-  I.seeElement('#bookmarkButton');
+  I.waitForElement('#bookmarkButton');
   I.click('#bookmarkButton');
 
   I.amOnPage('#/favorite');

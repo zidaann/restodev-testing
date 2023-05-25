@@ -18,7 +18,8 @@ Scenario('unbookmarked one restaurant', async ({ I }) => {
   const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant);
   I.click(firstRestaurant);
 
-  I.retry(3).seeElement('#bookmarkButton');
+  // I.retry(3).seeElement('#bookmarkButton');
+  I.waitForElement('#bookmarkButton');
   I.click('#bookmarkButton');
 
   I.amOnPage('#/favorite');

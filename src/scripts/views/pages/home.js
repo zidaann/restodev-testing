@@ -1,4 +1,5 @@
 import RestaurantDbSource from '../../data/therestaurantdb-source';
+import skeletonHandler from '../../utils/skeletonHandler';
 import { card } from '../templates/template-creator';
 
 const Home = {
